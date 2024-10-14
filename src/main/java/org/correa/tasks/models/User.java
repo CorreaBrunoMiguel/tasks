@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
+import static jakarta.persistence.CascadeType.ALL;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Getter
@@ -24,4 +27,7 @@ public class User {
 
     @Column(nullable = false, unique = true)
     public String email;
+
+    @OneToMany(mappedBy = "user", cascade = ALL)
+    private List<Task> tasks;
 }
